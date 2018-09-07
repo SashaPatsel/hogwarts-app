@@ -9,7 +9,9 @@ var PORT = process.env.PORT || 3005;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(express.static("public"));
+app.use(express.static(__dirname + '/public'));
+
+
 // Declaring our initial students
 var students = [
   {
@@ -37,15 +39,11 @@ var idCounter = 3;
 
 // Serving the HTML
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
 app.get("/add", function(req, res) {
   res.sendFile(path.join(__dirname, "/public/add.html"));
-});
-
-app.get("/learn", function(req, res) {
-  res.sendFile(path.join(__dirname, "learn.html"));
 });
 
 
